@@ -1,0 +1,16 @@
+.PHONY:clean
+OBJ=main.o tools.o zstack.o runtime.o compile.o
+main:$(OBJ)
+    gcc -Wall -g $^ -o $@
+main.o:main.c 
+    gcc -Wall -g -c $< -o $@ 
+tools.o:tools.c tools.h
+    gcc -Wall -g -c $< -o $@ 
+zstack.o:zstack.c zstack.h
+    gcc -Wall -g -c $< -o $@ 
+runtime.o:runtime.c runtime.h
+    gcc -Wall -g -c $< -o $@
+compile.o:compile.c compile.h
+	gcc -Wall -g -c $< -o $@
+clean:
+    rm -f *.o main
